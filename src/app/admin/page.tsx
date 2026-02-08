@@ -14,7 +14,7 @@ export default function AdminDashboardPage() {
       <div className="bg-gradient-to-r from-indigo-900 to-blue-900 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
         <div className="relative z-10">
           <h2 className="text-3xl font-bold mb-2">Welcome back, Admin!</h2>
-          <p className="text-blue-200">Here's what's happening with your projects today.</p>
+          <p className="text-blue-200">Here&apos;s what&apos;s happening with your projects today.</p>
         </div>
         <div className="absolute right-0 top-0 h-full w-1/2 bg-white/5 skew-x-12 -mr-16"></div>
         <div className="absolute right-20 bottom-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"></div>

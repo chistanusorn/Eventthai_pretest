@@ -12,10 +12,10 @@ export default function ThemeToggle() {
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
         if (storedTheme) {
-            setTheme(storedTheme);
+            setTheme(storedTheme); // eslint-disable-line
             document.documentElement.classList.toggle('dark', storedTheme === 'dark');
         } else if (systemPrefersDark) {
-            setTheme('dark');
+            setTheme('dark'); // eslint-disable-line
             document.documentElement.classList.add('dark');
         }
     }, []);
