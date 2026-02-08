@@ -42,7 +42,7 @@ export default function LoginPage() {
             email: 'eve.holt@reqres.in',
             password: 'SafeTestPass123!',
         });
-        toast.success('Test credentials filled');
+        toast.success('Test credentials filled successfully!');
     };
 
     return (

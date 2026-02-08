@@ -56,7 +56,7 @@ export default function RegisterPage() {
             password: 'SafeTestPass123!',
             confirmPassword: 'SafeTestPass123!',
         });
-        toast.success('Test credentials filled');
+        toast.success('Test credentials filled successfully!');
     };
 
     return (
