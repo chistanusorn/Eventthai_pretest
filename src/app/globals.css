@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode (Eye-Friendly & Soft) */
+  --background: #f1f5f9;
+  /* Changed from #ffffff to Slate-100 for softer look */
+  --foreground: #0f172a;
+  --secondary: #e2e8f0;
+  /* Slightly darker secondary for contrast */
+  --secondary-foreground: #334155;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --muted: #94a3b8;
+  --card: #ffffff;
+  --card-border: #e2e8f0;
+  /* Soft Blue / Slate Palette (Darker & Calmer) */
+  --hero-bg:
+    radial-gradient(at 0% 0%, hsla(210, 60%, 90%, 1) 0, transparent 50%),
+    /* Reduced brightness and saturation */
+    radial-gradient(at 50% 0%, hsla(220, 70%, 92%, 1) 0, transparent 50%),
+    /* Calmer Blue */
+    radial-gradient(at 100% 0%, hsla(200, 60%, 88%, 1) 0, transparent 50%),
+    /* Soft cyan/blue */
+    radial-gradient(at 80% 50%, hsla(210, 50%, 94%, 1) 0, transparent 50%),
+    /* Muted background gradient */
+    linear-gradient(135deg, #f1f5f9 0%, #e0f2fe 50%, #dbeafe 100%);
+  /* Slate-100 -> Sky-100 blend */
 }
 
-@theme inline {
+
+
+/* Manual Dark Mode Override */
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --secondary: #1e293b;
+  --secondary-foreground: #cbd5e1;
+  --primary: #818cf8;
+  --primary-foreground: #ffffff;
+  --muted: #475569;
+  --card: #0f172a;
+  --card-border: #1e293b;
+  --hero-bg: radial-gradient(circle at top left, #1e1b4b, #020617);
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-fade-in-up: fade-in-up 0.5s ease-out;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--hero-bg);
+  min-height: 100vh;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.hero-mesh {
+  background: var(--hero-bg);
+}
+
+/* Utility for clean cards */
+.clean-card {
+  background-color: var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 1rem;
 }
