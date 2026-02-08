@@ -134,15 +134,15 @@ export default function UsersPage() {
 
     // Delete Modal State
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-    const [userToDelete, setUserToDelete] = useState<number | null>(null);
+    const [userToDelete, setUserToDelete] = useState<User | null>(null);
     const [deleting, setDeleting] = useState(false);
 
     // Trash/Restore State
     const [deletedUsers, setDeletedUsers] = useState<User[]>([]);
     const [isTrashOpen, setIsTrashOpen] = useState(false);
 
-    const handleDeleteClick = (id: number) => {
-        setUserToDelete(id);
+    const handleDeleteClick = (user: User) => {
+        setUserToDelete(user);
         setIsDeleteOpen(true);
     };
 
@@ -160,15 +160,15 @@ export default function UsersPage() {
 
         setDeleting(true);
         try {
-            await api.delete(`/users/${userToDelete}`);
+            await api.delete(`/users/${userToDelete.id}`);
 
             // Move to "Trash" instead of just vanishing
-            const userToRemove = users.find(u => u.id === userToDelete);
+            const userToRemove = users.find(u => u.id === userToDelete.id);
             if (userToRemove) {
                 setDeletedUsers([...deletedUsers, userToRemove]);
             }
 
-            setUsers(users.filter(user => user.id !== userToDelete));
+            setUsers(users.filter(user => user.id !== userToDelete.id));
             toast.success('User moved to trash (mock)');
             setIsDeleteOpen(false);
         } catch (error) {
@@ -258,7 +258,7 @@ export default function UsersPage() {
                                     <Edit2 size={16} />
                                 </button>
                                 <button
-                                    onClick={() => handleDeleteClick(user.id)}
+                                    onClick={() => handleDeleteClick(user)}
                                     className="p-2 text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
                                     title="Delete"
                                 >
@@ -446,7 +446,7 @@ export default function UsersPage() {
                         </div>
                         <h3 className="text-lg font-bold text-gray-900 mb-2">Delete User?</h3>
                         <p className="text-gray-500 mb-6 text-sm">
-                            Are you sure you want to delete this user? This action cannot be undone.
+                            Are you sure you want to delete <span className="font-bold text-gray-900">{userToDelete?.first_name} {userToDelete?.last_name}</span>? This action cannot be undone.
                         </p>
                         <div className="flex space-x-3 justify-center">
                             <button
