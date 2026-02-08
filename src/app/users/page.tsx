@@ -446,7 +446,7 @@ export default function UsersPage() {
                         </div>
                         <h3 className="text-lg font-bold text-gray-900 mb-2">Delete User?</h3>
                         <p className="text-gray-500 mb-6 text-sm">
-                            Are you sure you want to delete <span className="font-bold text-gray-900">{userToDelete?.first_name} {userToDelete?.last_name}</span>? This action cannot be undone.
+                            Are you sure you want to delete <span className="font-bold text-gray-900 dark:text-white">{userToDelete?.first_name} {userToDelete?.last_name}</span>? This action cannot be undone.
                         </p>
                         <div className="flex space-x-3 justify-center">
                             <button
